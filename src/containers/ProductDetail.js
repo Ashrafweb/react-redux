@@ -14,12 +14,10 @@ function ProductDetail() {
   const product = useSelector((state) => state.product);
 
   useEffect(() => {
-    if (productId && productId !== "") {
-      dispatch(fetchProduct(productId));
-      return () => {
-        dispatch(RemoveselectedProduct());
-      };
-    }
+    if (productId && productId !== "") fetchProduct(productId);
+    return () => {
+      dispatch(RemoveselectedProduct());
+    };
   }, [productId]);
 
   const { title, image, category, price, description } = product;
