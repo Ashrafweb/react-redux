@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../index.css";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectedProduct,
   RemoveselectedProduct,
   fetchProduct,
 } from "../redux/actions/productActions";
@@ -15,17 +13,6 @@ function ProductDetail() {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
 
-  // const fetchproductDetail = async () => {
-  //   const response = await axios
-  //     .get(`https://fakestoreapi.com/products/${productId}`)
-  //     .catch((err) => {
-  //       console.log("Err", err);
-  //     });
-
-  //   dispatch(selectedProduct(response.data));
-  //   console.log(response.data);
-  // };
-
   useEffect(() => {
     if (productId && productId !== "") {
       dispatch(fetchProduct(productId));
@@ -35,7 +22,7 @@ function ProductDetail() {
     }
   }, [productId]);
 
-  const { id, title, image, category, price, description } = product;
+  const { title, image, category, price, description } = product;
 
   return (
     <>
@@ -48,7 +35,7 @@ function ProductDetail() {
               <div class="ui vertical divider">AND</div>
               <div class="middle aligned row">
                 <div class="column lp">
-                  <img class="ui fluid image" src={image} />
+                  <img class="ui fluid image" src={image} alt={title} />
                 </div>
                 <div class="column rp">
                   <h1>{title}</h1>
