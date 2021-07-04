@@ -10,7 +10,7 @@ function ProductComponent() {
     const { id, title, image, category, price } = product;
     return (
       <div className="four wide column" key={index}>
-        <Link to={`products/${id}`} className="ui link cards">
+        <Link to={`product/${id}`} className="ui link cards">
           <div className="card">
             <div className="images">
               <img src={image} alt={title} />
